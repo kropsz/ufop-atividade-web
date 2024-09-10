@@ -1,6 +1,7 @@
 package com.kropsz.backend.service
 
 import com.kropsz.backend.domain.Pessoa
+import com.kropsz.backend.domain.dto.PessoaDto
 
 interface PessoaService {
 
@@ -10,9 +11,9 @@ interface PessoaService {
 
     fun buscarPessoaPorNome(nome: String): List<Pessoa>
 
-    fun salvarPessoa(pessoa: Pessoa): Pessoa
+    fun salvarPessoa(pessoa: PessoaDto): Pessoa
 
-    fun atualizarPessoa(id: Int, pessoa: Pessoa): Pessoa
+    fun atualizarPessoa(id: Int, pessoa: PessoaDto): Pessoa
 
     fun deletarPessoa(id: Int)
 
