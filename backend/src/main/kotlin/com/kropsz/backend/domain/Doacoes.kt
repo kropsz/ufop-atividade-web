@@ -9,8 +9,8 @@ import java.time.LocalDate
 data class Doacoes(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Int,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int = 0,
 
     @ManyToMany(mappedBy = "doacoes")
     var pessoas: Set<Pessoa> = HashSet(),
@@ -20,7 +20,7 @@ data class Doacoes(
     var local: LocaisColeta,
 
     @Column(name = "data")
-    val data: LocalDate,
+    var data: LocalDate,
 
     @Column(name = "created_at")
     val createdAt: Instant,
