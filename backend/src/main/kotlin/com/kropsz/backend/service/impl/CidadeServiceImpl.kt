@@ -24,7 +24,7 @@ class CidadeServiceImpl(
             .orElseThrow { EntityNotFound("Cidade com ID $id não encontrada") }
     }
 
-    override fun buscarCidadePorNome(nome: String): List<Cidade> {
+    override fun buscarCidadePorNome(nome: String): Cidade {
         require(nome.isNotBlank()) { "O nome não pode ser nulo ou vazio." }
         return cidadeRepository.findByNome(nome)
     }

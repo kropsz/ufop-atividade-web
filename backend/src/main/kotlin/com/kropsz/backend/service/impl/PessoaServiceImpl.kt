@@ -26,7 +26,7 @@ class PessoaServiceImpl(
             .orElseThrow { EntityNotFound("Pessoa com ID $id não encontrada") }
     }
 
-    override fun buscarPessoaPorNome(nome: String): List<Pessoa> {
+    override fun buscarPessoaPorNome(nome: String): Pessoa {
         require(nome.isNotBlank()) { "O nome não pode ser nulo ou vazio." }
         return pessoaRepository.findByNome(nome)
     }
@@ -53,8 +53,7 @@ class PessoaServiceImpl(
     }
 
     override fun atualizarPessoa(id: Int, pessoa: PessoaDto): Pessoa {
-        val pessoaSalva = pessoaRepository.findById(id)
-            .orElseThrow { EntityNotFound("Pessoa com ID $id não encontrada") }
+        val pessoaSalva = buscarPessoaPorId(id)
 
         val cidade = cidadeRepository.findById(pessoa.cidadeId)
             .orElseThrow { EntityNotFound("Cidade com ID ${pessoa.cidadeId} não encontrada") }
@@ -70,6 +69,7 @@ class PessoaServiceImpl(
     }
 
     override fun deletarPessoa(id: Int) {
-        pessoaRepository.deleteById(id)
+        val pessoaSalva = buscarPessoaPorId(id)
+        pessoaRepository.delete(pessoaSalva)
     }
 }

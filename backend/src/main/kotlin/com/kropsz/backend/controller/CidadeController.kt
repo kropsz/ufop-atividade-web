@@ -21,17 +21,17 @@ class CidadeController (val cidadeService: CidadeService) {
         return ResponseEntity.ok(cidadeService.buscarCidadePorId(id))
     }
 
-    @GetMapping("/{nome}")
-    fun buscarPorNome(@PathVariable nome: String):ResponseEntity<List<Cidade>> {
+    @GetMapping("/nome/{nome}")
+    fun buscarPorNome(@PathVariable nome: String):ResponseEntity<Cidade> {
         return ResponseEntity.ok(cidadeService.buscarCidadePorNome(nome))
     }
 
     @PostMapping
     fun criar(@RequestBody cidade: CidadeDto): ResponseEntity<Cidade> {
+        val cidadeSalva = cidadeService.salvarCidade(cidade)
         return ResponseEntity.created(
-            URI.create("/cidades/${cidadeService.salvarCidade(cidade).id}")
-        ).build(
-        )
+            URI.create("/cidades/${cidadeSalva.id}")
+        ).body(cidadeSalva)
     }
 
     @PutMapping("/{id}")

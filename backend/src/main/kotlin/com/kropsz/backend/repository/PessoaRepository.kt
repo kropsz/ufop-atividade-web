@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface PessoaRepository : JpaRepository<Pessoa, Int> {
 
-    fun findByNome(nome: String): List<Pessoa>
+    fun findByNome(nome: String): Pessoa
 }

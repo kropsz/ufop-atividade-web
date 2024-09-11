@@ -9,7 +9,7 @@ interface PessoaService {
 
     fun buscarPessoaPorId(id: Int): Pessoa
 
-    fun buscarPessoaPorNome(nome: String): List<Pessoa>
+    fun buscarPessoaPorNome(nome: String): Pessoa
 
     fun salvarPessoa(pessoa: PessoaDto): Pessoa
 

@@ -8,8 +8,8 @@ import java.time.Instant
 data class LocaisColeta(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Int,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int = 0,
 
     @Column(name = "nome")
     var nome: String,

@@ -8,8 +8,8 @@ import java.time.Instant
 data class TipoSanguineo(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Int,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int = 0,
 
     @Column(name = "tipo")
     var tipo: String,
@@ -21,5 +21,5 @@ data class TipoSanguineo(
     val createdAt: Instant,
 
     @Column(name = "updated_at")
-    var updatedAt: Instant
+    var updatedAt: Instant?
 )

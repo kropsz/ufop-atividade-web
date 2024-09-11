@@ -21,12 +21,17 @@ class PessoaController(val pessoaService: PessoaService) {
         return ResponseEntity.ok(pessoaService.buscarPessoaPorId(id))
     }
 
+    @GetMapping("/nome/{nome}")
+    fun findByName(@PathVariable nome: String): ResponseEntity<Pessoa> {
+        return ResponseEntity.ok(pessoaService.buscarPessoaPorNome(nome))
+    }
+
     @PostMapping
     fun save(@RequestBody pessoa: PessoaDto): ResponseEntity<Pessoa> {
+        val pessoaSalva = pessoaService.salvarPessoa(pessoa)
         return ResponseEntity.created(
-            URI.create("/pessoa/${pessoaService.salvarPessoa(pessoa).id}")
-        ).build(
-        )
+            URI.create("/pessoa/${pessoaSalva.id}")
+        ).body(pessoaSalva)
     }
 
     @PutMapping("/{id}")

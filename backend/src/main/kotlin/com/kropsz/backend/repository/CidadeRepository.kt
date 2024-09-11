@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface CidadeRepository : JpaRepository<Cidade, Int> {
 
-    fun findByNome(nome: String): List<Cidade>
+    fun findByNome(nome: String): Cidade
 }

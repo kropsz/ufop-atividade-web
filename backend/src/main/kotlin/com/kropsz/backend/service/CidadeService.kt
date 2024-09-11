@@ -9,7 +9,7 @@ interface CidadeService {
 
     fun buscarCidadePorId(id: Int): Cidade
 
-    fun buscarCidadePorNome(nome: String): List<Cidade>
+    fun buscarCidadePorNome(nome: String): Cidade
 
     fun salvarCidade(cidade: CidadeDto): Cidade
 
